@@ -1,0 +1,26 @@
+# OS and editor files
+.DS_Store
+*.log
+*.log.*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.vscode/
+.idea/
+*.iml
+
+# React Native specific files
+node_modules/
+ios/Pods/
+ios/Podfile.lock
+android/build/
+android/app/build/
+android/local.properties
+
+# TypeScript specific files
+*.tsbuildinfo
+
+# Output directories
+dist/
+build/
+coverage/

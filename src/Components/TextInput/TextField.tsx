@@ -1,0 +1,80 @@
+import React, {useState, forwardRef} from 'react';
+import {Pressable, Text, TextInput, View} from 'react-native';
+import {TextFieldProps} from './TextField.interface';
+import {ErrorIcon} from '../../assets/icons/ErrorIcon';
+import {CloseIcon} from '../../assets/icons/CloseIcon';
+import styles from './TextInput.styles';
+
+const TextField = forwardRef<TextInput, TextFieldProps>(
+  ({title, caption, error, disabled = false, value, startIcon, ...rest}) => {
+    const [isFocused, setIsFocused] = useState(false);
+
+    const deleteText = () => {
+      if (!rest.onChangeText) return;
+      rest.onChangeText('');
+    };
+
+    return (
+      <View style={styles.container}>
+        <Text style={[styles.title, disabled ? styles.disabledText : {}]}>
+          {title}
+        </Text>
+
+        <View
+          style={[
+            styles.input,
+            error ? styles.errorInput : {},
+            !!startIcon ? styles.iconPadding : {},
+            disabled ? [styles.disabledContainer, styles.disabledBorder] : {},
+          ]}>
+          <View
+            style={[styles.iconContainer, disabled ? styles.disabledIcon : {}]}>
+            {startIcon}
+          </View>
+
+          <TextInput
+            style={styles.filledTextInput}
+            editable={!disabled}
+            value={value}
+            {...rest}
+            onFocus={e => {
+              setIsFocused(true);
+              if (rest.onFocus) {
+                rest.onFocus(e);
+              }
+            }}
+            onBlur={e => {
+              setIsFocused(false);
+              if (rest.onBlur) {
+                rest.onBlur(e);
+              }
+            }}
+          />
+
+          {isFocused && (
+            <Pressable style={styles.closeIconContainer} onPress={deleteText}>
+              <CloseIcon />
+            </Pressable>
+          )}
+        </View>
+
+        <View>
+          {!!error && (
+            <View style={styles.errorContainer}>
+              <ErrorIcon />
+              <Text style={styles.errorMsg}>{error}</Text>
+            </View>
+          )}
+
+          {!error && caption && (
+            <Text style={[styles.caption, disabled ? styles.disabledText : {}]}>
+              {caption}
+            </Text>
+          )}
+        </View>
+      </View>
+    );
+  },
+);
+
+export default TextField;
