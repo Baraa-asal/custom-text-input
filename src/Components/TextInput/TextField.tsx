@@ -6,7 +6,7 @@ import {CloseIcon} from '../../assets/icons/CloseIcon';
 import styles from './TextInput.styles';
 
 const TextField = forwardRef<TextInput, TextFieldProps>(
-  ({title, caption, error, disabled = false, value, startIcon, ...rest}) => {
+  ({title, caption, error, disabled = false, startIcon, ...rest}) => {
     const [isFocused, setIsFocused] = useState(false);
 
     const deleteText = () => {
@@ -19,11 +19,10 @@ const TextField = forwardRef<TextInput, TextFieldProps>(
         <Text style={[styles.title, disabled ? styles.disabledText : {}]}>
           {title}
         </Text>
-
         <View
           style={[
-            styles.input,
-            error ? styles.errorInput : {},
+            styles.inputContainer,
+            error ? styles.inputContainerError : {},
             !!startIcon ? styles.iconPadding : {},
             disabled ? [styles.disabledContainer, styles.disabledBorder] : {},
           ]}>
@@ -31,11 +30,9 @@ const TextField = forwardRef<TextInput, TextFieldProps>(
             style={[styles.iconContainer, disabled ? styles.disabledIcon : {}]}>
             {startIcon}
           </View>
-
           <TextInput
-            style={styles.filledTextInput}
+            style={styles.textInput}
             editable={!disabled}
-            value={value}
             {...rest}
             onFocus={e => {
               setIsFocused(true);
@@ -50,14 +47,12 @@ const TextField = forwardRef<TextInput, TextFieldProps>(
               }
             }}
           />
-
           {isFocused && (
             <Pressable style={styles.closeIconContainer} onPress={deleteText}>
               <CloseIcon />
             </Pressable>
           )}
         </View>
-
         <View>
           {!!error && (
             <View style={styles.errorContainer}>
@@ -65,7 +60,6 @@ const TextField = forwardRef<TextInput, TextFieldProps>(
               <Text style={styles.errorMsg}>{error}</Text>
             </View>
           )}
-
           {!error && caption && (
             <Text style={[styles.caption, disabled ? styles.disabledText : {}]}>
               {caption}

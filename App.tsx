@@ -58,11 +58,6 @@ const App: React.FC = () => {
         title="First Name"
         caption="Caption here!"
         startIcon={<PersonIcon />}
-        // placeholder={'Hello there'}
-        // onFocus={() => {
-        //   console.log('onFocused from a developer!');
-        // }}
-        // onBlur={() => {}}
       />
 
       <ScrollView style={{marginTop: 50}}>
@@ -77,7 +72,6 @@ const App: React.FC = () => {
                   (!status.props.disabled ||
                     (status.props.disabled && !variation.props.error)) && (
                     <View key={`v-${i}-${j}`}>
-                      {/* <Text key={`s-${i}`}>{variation.title}</Text> */}
                       <TextField {...combinedProps} />
                     </View>
                   )
