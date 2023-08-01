@@ -79,6 +79,11 @@ const styles = StyleSheet.create({
     paddingEnd: 12,
     end: 0,
   },
+  galleryTitle: {
+    color: '#00bfa5',
+    fontSize: 18,
+    fontStyle: 'italic',
+  }
 });
 
 export default styles;
