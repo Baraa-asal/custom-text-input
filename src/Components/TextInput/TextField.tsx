@@ -6,7 +6,7 @@ import {CloseIcon} from '../../assets/icons/CloseIcon';
 import styles from './TextInput.styles';
 
 const TextField = forwardRef<TextInput, TextFieldProps>(
-  ({title, caption, error, disabled = false, startIcon, ...rest}) => {
+  ({title, caption, error, startIcon, editable = true, ...rest}, ref) => {
     const [isFocused, setIsFocused] = useState(false);
 
     const deleteText = () => {
@@ -16,7 +16,7 @@ const TextField = forwardRef<TextInput, TextFieldProps>(
 
     return (
       <View style={styles.container}>
-        <Text style={[styles.title, disabled ? styles.disabledText : {}]}>
+        <Text style={[styles.title, !editable ? styles.disabledText : {}]}>
           {title}
         </Text>
         <View
@@ -24,15 +24,19 @@ const TextField = forwardRef<TextInput, TextFieldProps>(
             styles.inputContainer,
             error ? styles.inputContainerError : {},
             !!startIcon ? styles.iconPadding : {},
-            disabled ? [styles.disabledContainer, styles.disabledBorder] : {},
+            !editable ? [styles.disabledContainer, styles.disabledBorder] : {},
           ]}>
           <View
-            style={[styles.iconContainer, disabled ? styles.disabledIcon : {}]}>
+            style={[
+              styles.iconContainer,
+              !editable ? styles.disabledIcon : {},
+            ]}>
             {startIcon}
           </View>
           <TextInput
+            ref={ref}
             style={styles.textInput}
-            editable={!disabled}
+            editable={editable}
             {...rest}
             onFocus={e => {
               setIsFocused(true);
@@ -60,8 +64,10 @@ const TextField = forwardRef<TextInput, TextFieldProps>(
               <Text style={styles.errorMsg}>{error}</Text>
             </View>
           )}
+
           {!error && caption && (
-            <Text style={[styles.caption, disabled ? styles.disabledText : {}]}>
+            <Text
+              style={[styles.caption, !editable ? styles.disabledText : {}]}>
               {caption}
             </Text>
           )}

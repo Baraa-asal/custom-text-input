@@ -1,6 +1,6 @@
 import {TextInputProps} from 'react-native';
 
-export interface TextFieldProps extends Omit<TextInputProps, 'editable'> {
+export interface TextFieldProps extends TextInputProps {
   /**
    * The title or label for the text field.
    */
@@ -10,11 +10,6 @@ export interface TextFieldProps extends Omit<TextInputProps, 'editable'> {
    * An optional caption or additional information for the text field.
    */
   caption?: string;
-
-  /**
-   * Determines if the text field is disabled and cannot be interacted with.
-   */
-  disabled?: boolean;
 
   /**
    * An error message to display below the text field in case of an error.
