@@ -36,13 +36,11 @@ export default MyComponent;
 |  caption  | `string` |     `string`      |   Optional caption or helper text to display below the input field.   |
 |   error   | `string` |     `string`      | Error message to be displayed when there's an input validation error. |
 | startIcon |    -     | `React.ReactNode` | An optional icon component to be displayed at the start of the input. |
-|   value   |    -     |     `string`      |                     The value of the input field.                     |
+| editable  |  `true`  |     `boolean`     |   An optional value that controls the input to be disabled or not.    |
 |   rest    |    -     | `TextInputProps`  | Other props that can be passed to the underlying TextInput component. |
-|           |
 
 ## Additional Features
 
 - If the startIcon prop is provided, the icon will be displayed at the beginning of the input field.
 - If the error prop is provided, the input field border will change color to indicate the error state, and the error message will be displayed below the input field.
 - If the input field is focused, a close icon will appear at the end of the input field, allowing the user to quickly clear the input.
-- The disabled prop can be used to make the input field uneditable.
