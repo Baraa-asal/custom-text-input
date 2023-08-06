@@ -5,18 +5,26 @@ const styles = StyleSheet.create({
     position: 'relative',
     marginBottom: 15,
   },
-  disabledContainer: {
-    backgroundColor: '#F4F6FF',
-  },
+
   title: {
     fontFamily: 'Inter-Regular',
     color: '#3B3F50',
     fontSize: 14,
     fontWeight: '400',
     lineHeight: 25,
+    marginBottom: 4,
   },
   disabledText: {
     color: '#6E7184',
+  },
+  disabledContainer: {
+    backgroundColor: '#F4F6FF',
+  },
+  disabledBorder: {
+    borderColor: '#6E7184',
+  },
+  disabledIcon: {
+    opacity: 0.3,
   },
   inputContainer: {
     justifyContent: 'center',
@@ -25,8 +33,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#B6B9CE',
     borderRadius: 3,
-    paddingLeft: 16,
-    marginTop: 4,
+    paddingHorizontal: 16,
   },
   textInput: {
     color: '#4C63A3',
@@ -36,16 +43,12 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     lineHeight: 25,
   },
-  disabledBorder: {
-    borderColor: '#6E7184',
-  },
+
   iconContainer: {
     position: 'absolute',
     paddingStart: 16,
   },
-  disabledIcon: {
-    opacity: 0.3,
-  },
+
   iconPadding: {
     paddingLeft: 40,
   },
@@ -69,6 +72,9 @@ const styles = StyleSheet.create({
     lineHeight: 18,
     marginLeft: 4,
   },
+  helpingText: {
+    marginBottom: 20,
+  },
   errorContainer: {
     marginTop: 4,
     flexDirection: 'row',
@@ -76,7 +82,7 @@ const styles = StyleSheet.create({
   },
   closeIconContainer: {
     position: 'absolute',
-    paddingEnd: 12,
+    paddingEnd: 20,
     end: 0,
   },
   galleryTitle: {

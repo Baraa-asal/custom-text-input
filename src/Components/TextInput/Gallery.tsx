@@ -15,6 +15,7 @@ const Gallery = () => {
             {INPUT_VARIATIONS.map((variation, j) => {
               const combinedProps = {...status.props, ...variation.props};
               return (
+                // in case it's editable: show it ALL, if not editable, just show the cases with NO error
                 (status.props.editable ||
                   (!status.props.editable && !variation.props.error)) && (
                   <View key={`v-${i}-${j}`}>

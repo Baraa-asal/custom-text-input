@@ -17,16 +17,17 @@ const App: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      {/* EXAMPLE : */}
-      <TextField
-        editable={false}
-        onChangeText={firstNameHandler}
-        error={firstNameIsValid}
-        value={firstName}
-        title="First Name"
-        caption="Caption here!"
-        startIcon={<MessageIcon />}
-      />
+      {/* ------------------ E X A M P L E ------------------ */}
+      <View style={styles.exampleContainer}>
+        <TextField
+          onChangeText={firstNameHandler}
+          error={firstNameIsValid}
+          value={firstName}
+          title="First Name"
+          caption="Caption here!"
+          startIcon={<MessageIcon />}
+        />
+      </View>
       <Gallery />
     </View>
   );
@@ -34,9 +35,12 @@ const App: React.FC = () => {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 50,
     flex: 1,
-    paddingHorizontal: 40,
+    alignItems: 'center',
+  },
+  exampleContainer: {
+    marginHorizontal: 24,
+    marginVertical: 20,
   },
 });
 

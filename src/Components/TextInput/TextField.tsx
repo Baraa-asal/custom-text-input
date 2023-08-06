@@ -57,7 +57,7 @@ const TextField = forwardRef<TextInput, TextFieldProps>(
             </Pressable>
           )}
         </View>
-        <View>
+        <View style={styles.helpingText}>
           {!!error && (
             <View style={styles.errorContainer}>
               <ErrorIcon />
